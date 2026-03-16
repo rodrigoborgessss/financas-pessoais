@@ -1,0 +1,91 @@
+/* ============================================================
+   base.css — variáveis, reset e estrutura principal
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap');
+
+/* --- Variáveis de design --- */
+:root {
+  --bg:      #0f0f13;
+  --bg2:     #18181f;
+  --bg3:     #22222c;
+  --bg4:     #2c2c38;
+
+  --green:   #34d399;
+  --red:     #f87171;
+  --blue:    #818cf8;
+  --amber:   #fbbf24;
+
+  --t1:      #f1f1f3;
+  --t2:      #9898a8;
+  --t3:      #5a5a6e;
+
+  --radius:    20px;
+  --radius-sm: 12px;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--t1);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+/* --- Moldura de telemóvel --- */
+.phone {
+  width: 390px;
+  min-height: 780px;
+  background: var(--bg);
+  border-radius: 44px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.07),
+    0 40px 80px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.notch {
+  width: 120px;
+  height: 34px;
+  background: var(--bg);
+  border-radius: 0 0 20px 20px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.screen {
+  padding: 0 0 90px;
+}
+
+/* --- Páginas --- */
+.page {
+  display: none;
+  animation: fadeIn 0.2s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Espaçadores utilitários --- */
+.spacer  { height: 16px; }
+.gap-sm  { height: 12px; }
+.gap-xs  { height: 4px; }

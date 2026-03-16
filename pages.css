@@ -1,0 +1,176 @@
+/* ============================================================
+   pages.css — estilos específicos de cada página
+   ============================================================ */
+
+/* ---- Página: Adicionar registo ---- */
+
+.form-card {
+  background: var(--bg2);
+  border-radius: var(--radius);
+  margin: 0 20px 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Toggle despesa / receita */
+.type-row {
+  display: flex;
+  background: var(--bg3);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  margin-bottom: 16px;
+}
+
+.type-opt {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--t2);
+  transition: all 0.2s;
+}
+
+.type-opt.active          { background: var(--bg4); color: var(--t1); }
+.type-opt.active.exp-opt  { color: var(--red); }
+.type-opt.active.inc-opt  { color: var(--green); }
+
+/* Campos do formulário */
+.f-group { margin-bottom: 12px; }
+
+.f-label {
+  font-size: 11px;
+  color: var(--t2);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.f-input {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-sm);
+  color: var(--t1);
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.f-input:focus { border-color: rgba(129, 140, 248, 0.5); }
+
+.f-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Botão de guardar */
+.add-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #6366f1, #818cf8);
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: opacity 0.15s;
+}
+
+.add-btn:hover { opacity: 0.9; }
+
+
+/* ---- Página: Orçamento ---- */
+
+.budget-item {
+  background: var(--bg2);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 0 20px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.budget-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.budget-cat  { font-size: 14px; font-weight: 500; color: var(--t1); }
+.budget-vals { font-size: 12px; color: var(--t3); }
+
+.budget-bar-bg {
+  height: 6px;
+  background: var(--bg3);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.budget-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* Card de inputs de limites */
+.budget-inputs-card {
+  background: var(--bg2);
+  border-radius: var(--radius);
+  margin: 0 20px 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.b-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.b-row-label {
+  font-size: 13px;
+  color: var(--t2);
+  min-width: 90px;
+}
+
+.b-input {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  color: var(--t1);
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.b-input:focus { border-color: rgba(129, 140, 248, 0.4); }
+
+.save-btn {
+  width: 100%;
+  padding: 13px;
+  background: var(--bg4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  color: var(--t1);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.15s;
+}
+
+.save-btn:hover { background: var(--bg3); }

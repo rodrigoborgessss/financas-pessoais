@@ -1,0 +1,316 @@
+/* ============================================================
+   components.css — componentes reutilizáveis
+   ============================================================ */
+
+/* --- Cabeçalho de página --- */
+.pg-header {
+  padding: 16px 24px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pg-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--t1);
+}
+
+/* --- Saudação (dashboard) --- */
+.greeting-row {
+  padding: 20px 24px 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.greeting-text {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--t1);
+  line-height: 1.15;
+}
+
+.greeting-sub {
+  font-size: 13px;
+  color: var(--t2);
+  margin-top: 4px;
+}
+
+.greeting-emoji {
+  font-size: 36px;
+  line-height: 1;
+}
+
+/* --- Hero card (saldo) --- */
+.hero {
+  margin: 16px 20px 12px;
+  background: linear-gradient(135deg, #1e1e2e 0%, #16213e 50%, #0d1b2a 100%);
+  border-radius: var(--radius);
+  padding: 24px;
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-label {
+  font-size: 12px;
+  color: var(--t2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.hero-amount {
+  font-size: 38px;
+  font-weight: 300;
+  color: var(--t1);
+  letter-spacing: -1px;
+  font-family: 'DM Serif Display', serif;
+}
+
+.hero-amount span {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--t2);
+  margin-right: 4px;
+}
+
+.hero-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.hero-stat {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+
+.hero-stat-label {
+  font-size: 11px;
+  color: var(--t2);
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hero-stat-val        { font-size: 15px; font-weight: 500; }
+.hero-stat-val.inc    { color: var(--green); }
+.hero-stat-val.exp    { color: var(--red); }
+
+/* --- Dots de estado --- */
+.dot   { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+.dot-g { background: var(--green); }
+.dot-r { background: var(--red); }
+
+/* --- Seletor de mês --- */
+.month-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px 0;
+}
+
+.month-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg3);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: var(--t2);
+}
+
+.month-pill select,
+.filter-select {
+  background: transparent;
+  border: none;
+  color: var(--t1);
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  cursor: pointer;
+}
+
+.filter-select {
+  background: var(--bg3);
+  border-radius: 20px;
+  padding: 7px 12px;
+}
+
+.month-icon {
+  font-size: 12px;
+  color: var(--t3);
+}
+
+/* --- Cabeçalhos de secção --- */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px 10px;
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--t2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.section-link {
+  font-size: 12px;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+/* --- Cards de transação --- */
+.trans-list {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trans-card {
+  background: var(--bg2);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.trans-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.trans-info        { flex: 1; min-width: 0; }
+.trans-name        { font-size: 14px; font-weight: 500; color: var(--t1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.trans-cat         { font-size: 12px; color: var(--t3); margin-top: 1px; }
+.trans-right-col   { text-align: right; }
+.trans-amount      { font-size: 15px; font-weight: 600; }
+.trans-amount.inc  { color: var(--green); }
+.trans-amount.exp  { color: var(--t1); }
+.trans-date-s      { font-size: 11px; color: var(--t3); margin-top: 2px; }
+
+.del-btn {
+  background: none;
+  border: none;
+  color: var(--t3);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 2px 6px;
+  margin-left: 4px;
+  border-radius: 8px;
+  transition: color 0.15s;
+}
+
+.del-btn:hover { color: var(--red); }
+
+/* --- Gráfico de rosca --- */
+.dough-wrap {
+  position: relative;
+  height: 180px;
+  width: 180px;
+  margin: 0 auto;
+}
+
+.dough-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.dough-center-val { font-size: 18px; font-weight: 600; color: var(--t1); }
+.dough-center-lbl { font-size: 10px; color: var(--t2); }
+
+/* --- Legenda do gráfico --- */
+.cat-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 24px 0;
+}
+
+.cat-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--t2);
+}
+
+.cat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* --- Navegação inferior --- */
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg2);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  padding: 12px 10px 24px;
+  border-radius: 0 0 44px 44px;
+}
+
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 4px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+}
+
+.nav-btn:hover      { background: rgba(255, 255, 255, 0.05); }
+.nav-icon           { font-size: 20px; line-height: 1; }
+.nav-label          { font-size: 10px; color: var(--t3); transition: color 0.15s; }
+.nav-btn.active .nav-label { color: var(--blue); }
+
+/* --- Estado vazio --- */
+.empty {
+  text-align: center;
+  color: var(--t3);
+  font-size: 13px;
+  padding: 2rem 0;
+}
