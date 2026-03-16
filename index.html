@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finanças Pessoais</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="screen">
+
+    <!-- DASHBOARD -->
+    <div id="page-dashboard" class="page active">
+      <div class="greeting-row">
+        <div>
+          <div class="greeting-text" id="greeting-main">Bom dia</div>
+          <div class="greeting-sub" id="dash-date-sub"></div>
+        </div>
+        <div class="greeting-emoji" id="greeting-emoji">☀️</div>
+      </div>
+
+      <div class="month-row">
+        <div class="month-pill">
+          <span class="month-icon">📅</span>
+          <select id="dash-month" onchange="renderDashboard()"></select>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="hero-label">Saldo disponível</div>
+        <div class="hero-amount" id="hero-bal"><span>€</span>0,00</div>
+        <div class="hero-row">
+          <div class="hero-stat">
+            <div class="hero-stat-label"><span class="dot dot-g"></span>Receitas</div>
+            <div class="hero-stat-val inc" id="hero-inc">€ 0,00</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label"><span class="dot dot-r"></span>Despesas</div>
+            <div class="hero-stat-val exp" id="hero-exp">€ 0,00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <span class="section-title">Despesas por categoria</span>
+      </div>
+      <div class="dough-wrap">
+        <canvas id="cat-chart"></canvas>
+        <div class="dough-center">
+          <div class="dough-center-val" id="dough-val">€0</div>
+          <div class="dough-center-lbl">total</div>
+        </div>
+      </div>
+      <div class="cat-legend" id="cat-legend"></div>
+
+      <div class="section-head">
+        <span class="section-title">Últimos movimentos</span>
+        <span class="section-link" onclick="showPage('add')">+ Adicionar</span>
+      </div>
+      <div class="trans-list" id="recent-list"></div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- HISTÓRICO -->
+    <div id="page-history" class="page">
+      <div class="pg-header">
+        <div class="pg-title">Movimentos</div>
+      </div>
+      <div class="month-row">
+        <div class="month-pill">
+          <span class="month-icon">📅</span>
+          <select id="hist-month" onchange="renderHistory()"></select>
+        </div>
+        <select id="hist-type" class="filter-select" onchange="renderHistory()">
+          <option value="all">Todos</option>
+          <option value="expense">Despesas</option>
+          <option value="income">Receitas</option>
+        </select>
+      </div>
+      <div class="gap-sm"></div>
+      <div class="trans-list" id="hist-list"></div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- ADICIONAR -->
+    <div id="page-add" class="page">
+      <div class="pg-header">
+        <div class="pg-title">Novo registo</div>
+      </div>
+      <div class="gap-xs"></div>
+      <div class="form-card">
+        <div class="type-row">
+          <div class="type-opt exp-opt active" id="opt-exp" onclick="setType('expense')">Despesa</div>
+          <div class="type-opt inc-opt" id="opt-inc" onclick="setType('income')">Receita</div>
+        </div>
+        <div class="f-group">
+          <div class="f-label">Descrição</div>
+          <input class="f-input" id="f-desc" type="text" placeholder="Ex: Supermercado…" />
+        </div>
+        <div class="f-row">
+          <div class="f-group">
+            <div class="f-label">Valor (€)</div>
+            <input class="f-input" id="f-val" type="number" placeholder="0,00" min="0" step="0.01" />
+          </div>
+          <div class="f-group">
+            <div class="f-label">Data</div>
+            <input class="f-input" id="f-date" type="date" />
+          </div>
+        </div>
+        <div class="f-group">
+          <div class="f-label">Categoria</div>
+          <select class="f-input" id="f-cat">
+            <option value="Alimentação">Alimentação</option>
+            <option value="Transportes">Transportes</option>
+            <option value="Habitação">Habitação</option>
+            <option value="Saúde">Saúde</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Educação">Educação</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+        <button class="add-btn" onclick="addTransaction()">Guardar registo</button>
+      </div>
+    </div>
+
+    <!-- ORÇAMENTO -->
+    <div id="page-budget" class="page">
+      <div class="pg-header">
+        <div class="pg-title">Orçamento</div>
+      </div>
+      <div class="section-head">
+        <span class="section-title">Progresso deste mês</span>
+      </div>
+      <div id="budget-progress"></div>
+      <div class="section-head">
+        <span class="section-title">Definir limites</span>
+      </div>
+      <div class="budget-inputs-card">
+        <div id="budget-inputs"></div>
+        <button class="save-btn" onclick="saveBudgets()">Guardar limites</button>
+      </div>
+      <div class="spacer"></div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" id="nav-dashboard" onclick="showPage('dashboard')">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">Início</span>
+    </button>
+    <button class="nav-btn" id="nav-history" onclick="showPage('history')">
+      <span class="nav-icon">📋</span>
+      <span class="nav-label">Movimentos</span>
+    </button>
+    <button class="nav-btn" id="nav-add" onclick="showPage('add')">
+      <span class="nav-icon">➕</span>
+      <span class="nav-label">Adicionar</span>
+    </button>
+    <button class="nav-btn" id="nav-budget" onclick="showPage('budget')">
+      <span class="nav-icon">🎯</span>
+      <span class="nav-label">Orçamento</span>
+    </button>
+  </nav>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/budget.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
